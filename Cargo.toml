@@ -7,20 +7,21 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-reframework_api_rs = { path = "../reframework-api-rs" }
-
-log = "0.4"
-kira = "0.10"
-eyre = "0.6"
-mlua = { version = "0.10", features = [
+reframework_api_rs = { git = "https://github.com/paean-of-guidance/reframework-api-rs.git", branch = "main" }
+# to fix the lua 5.4.3 version
+mlua = { git = "https://github.com/eigeen/mlua-for-ref.git", features = [
     "lua54",
     "vendored",
     "send",
     "serialize",
 ] }
+
+log = "0.4"
+kira = "0.10"
+eyre = "0.6"
 serde = { version = "1", features = ["derive"] }
-parking_lot = "0.12.3"
-thiserror = "2.0.12"
+parking_lot = "0.12"
+thiserror = "2.0"
 
 [profile.release]
 # lto = true
