@@ -1,8 +1,5 @@
 use std::{
-    collections::HashMap,
-    ptr::{addr_of, addr_of_mut},
-    thread,
-    time::Duration,
+    collections::HashMap, ptr::{addr_of, addr_of_mut}, sync::OnceLock, thread, time::Duration
 };
 
 use kira::{
@@ -18,7 +15,7 @@ use kira::{
 use parking_lot::Mutex;
 use serde::{Deserialize, Serialize};
 
-static mut audio_engine: Option<AudioEngine> = None;
+static AUDIO_ENGINE: OnceLock<AudioEngine> = OnceLock::new();
 
 #[derive(Debug, thiserror::Error)]
 pub enum AudioError {
@@ -39,7 +36,7 @@ pub(crate) struct AudioEngine {
 
 impl AudioEngine {
     pub fn global() -> &'static Self {
-        unsafe { (*addr_of!(audio_engine)).as_ref().unwrap() }
+        AUDIO_ENGINE.get().expect("Audio engine not initialized")
     }
 
     pub fn initialize() -> eyre::Result<()> {
@@ -48,16 +45,15 @@ impl AudioEngine {
         let mut main_track = audio_manager.add_sub_track(TrackBuilder::default())?;
         let bgm_track = main_track.add_sub_track(TrackBuilder::default())?;
         let effect_track = main_track.add_sub_track(TrackBuilder::default())?;
-        unsafe {
-            audio_engine = Some(AudioEngine {
-                inner: Mutex::new(AudioEngineInner {
-                    audio_manager,
-                    main_track,
-                    bgm_track,
-                    effect_track,
-                }),
-            })
-        }
+        AUDIO_ENGINE.set(AudioEngine {
+            inner: Mutex::new(AudioEngineInner {
+                audio_manager,
+                main_track,
+                bgm_track,
+                effect_track,
+            }),
+        }).map_err(|_| eyre::eyre!("Audio engine already initialized"))?;
+
         Ok(())
     }
 

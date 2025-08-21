@@ -6,7 +6,7 @@ use kira::{
     track::{TrackHandle, TrackPlaybackState},
 };
 use mlua::prelude::*;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::{
     audio::{AudioEngine, DecibelsExt, TrackType},
@@ -44,6 +44,7 @@ impl LuaUserData for SoundModule {
             }
 
             let sound_data = StaticSoundData::from_file(&file_path).into_lua_err()?;
+
             Ok(StaticSoundLua(sound_data))
         });
     }
@@ -94,6 +95,10 @@ impl LuaUserData for StaticSoundLua {
         methods.add_method_mut("set_volume", |_lua, this, volume: f32| {
             let volume = Decibels::from_amplitude(volume);
             this.0 = this.0.volume(volume);
+            Ok(())
+        });
+        methods.add_method_mut("set_playback_rate", |_lua, this, playback_rate: f64| {
+            this.0 = this.0.playback_rate(playback_rate);
             Ok(())
         });
     }
