@@ -38,7 +38,7 @@ local function update_motion_info()
 
     -- only when motion id or bank id changed
     if ctx.enable_features.motion then
-        -- if motion id not changed, return
+        -- if motion id not changed, pass
         if g_last_motion_info and Helper.motion_matches(motion_info, sub_motion_info, g_last_motion_info) then
             return
         end
@@ -83,8 +83,15 @@ sdk.hook(SOUND_CONTAINER_TRIGGER_01, function(args)
         trigger_id = trigger_id,
         event_id = event_id
     }
+    local context = {
+        prevent_default_trigger = false
+    }
 
-    api:emit_event(api.EventType.SOUND_TRIGGER, data)
+    api:emit_event(api.EventType.SOUND_TRIGGER, data, context)
+
+    if context.prevent_default_trigger then
+        return sdk.PreHookResult.SKIP_ORIGINAL
+    end
 end, function(retval)
 end)
 
@@ -106,7 +113,14 @@ sdk.hook(SOUND_CONTAINER_TRIGGER_02, function(args)
         trigger_id = trigger_id,
         event_id = nil
     }
+    local context = {
+        prevent_default_trigger = false
+    }
 
-    api:emit_event(api.EventType.SOUND_TRIGGER, data)
+    api:emit_event(api.EventType.SOUND_TRIGGER, data, context)
+
+    if context.prevent_default_trigger then
+        return sdk.PreHookResult.SKIP_ORIGINAL
+    end
 end, function(retval)
 end)
