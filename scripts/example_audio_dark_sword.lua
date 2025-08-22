@@ -35,7 +35,6 @@ local SOUNDS = {
 -- states
 local g_first_hit_success = false
 local g_mute_start = 0
-local g_last_motion_info = nil
 
 local function play_sound(sound_name, override_options)
     local sound_data = SOUNDS[sound_name]
@@ -84,18 +83,12 @@ local function with_mute(func, ...)
     g_mute_start = os.clock()
 end
 
+-- 每次动作ID改变时触发一次（不包括动作帧改变）
 api:on_event(api.EventType.PLAYER_MOTION, function(motion_info, sub_motion_info)
     ---@type MhMotionInfo
     local motion_info = motion_info
     ---@type MhSubMotionInfo
     local sub_motion_info = sub_motion_info
-
-    if g_last_motion_info and g_last_motion_info.MotionID == motion_info.MotionID and g_last_motion_info.MotionBankID ==
-        motion_info.MotionBankID then
-        g_last_motion_info = motion_info
-        return
-    end
-    g_last_motion_info = motion_info
 
     if Helper.motion_matches(motion_info, sub_motion_info, {
         motion_id = 483,
@@ -124,6 +117,7 @@ api:on_event(api.EventType.PLAYER_MOTION, function(motion_info, sub_motion_info)
     end
 end)
 
+-- 每次游戏音效触发时触发一次
 api:on_event(api.EventType.SOUND_TRIGGER, function(data)
     local trigger_id = data.trigger_id
     local event_id = data.event_id
