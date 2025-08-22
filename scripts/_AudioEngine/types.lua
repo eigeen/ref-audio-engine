@@ -20,5 +20,7 @@ local _ = _
 
 ---@class SoundData
 ---@field set_volume fun(self: SoundData, volume_amplitude: number)
+---@field set_playback_rate fun(self: SoundData, playback_rate: number)
+---@field set_delay fun(self: SoundData, delay: number)
 
 ---@alias TrackType string
