@@ -1,7 +1,7 @@
-use std::path::PathBuf;
+use std::{path::PathBuf, time::Duration};
 
 use kira::{
-    Decibels, Tween,
+    Decibels, StartTime, Tween,
     sound::static_sound::StaticSoundData,
     track::{TrackHandle, TrackPlaybackState},
 };
@@ -99,6 +99,12 @@ impl LuaUserData for StaticSoundLua {
         });
         methods.add_method_mut("set_playback_rate", |_lua, this, playback_rate: f64| {
             this.0 = this.0.playback_rate(playback_rate);
+            Ok(())
+        });
+        methods.add_method_mut("set_delay", |_lua, this, time_ms: u64| {
+            this.0 = this
+                .0
+                .start_time(StartTime::Delayed(Duration::from_millis(time_ms)));
             Ok(())
         });
     }
