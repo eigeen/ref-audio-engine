@@ -76,7 +76,7 @@ api:on_event(api.EventType.SOUND_TRIGGER, function(trigger_data)
 end)
 ```
 
-具体内容请参考游戏对应的文档 [Monster Hunter Wilds](./games/mhwilds/).
+具体内容请参考游戏对应的文档 [Monster Hunter Wilds](/games/mhwilds/).
 
 ## 下一步
 

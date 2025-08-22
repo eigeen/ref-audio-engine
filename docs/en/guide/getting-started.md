@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Getting Started
 
 REF Audio Engine is an audio playback plugin designed for REFramework, providing high-quality audio playback functionality through Lua scripts.
@@ -84,9 +86,3 @@ For specific content, please refer to the game-specific documentation [Monster H
 - Read [Basic Concepts](./concepts) to understand core concepts
 - Browse [API Documentation](/en/api/core) for complete API reference
 - Check [MHWilds Zone](/en/games/mhwilds/) for game-specific features
-
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

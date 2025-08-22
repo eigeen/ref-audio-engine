@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Audio Engine API
 
 The AudioEngine class provides advanced audio management functionality, including track management, audio caching, and playback control.
@@ -264,8 +266,3 @@ engine:drop_track(Enum.TrackType.Bgm, "old_scene_bgm")
 - [Simple API](./simple) - Simplified audio playback interface
 - [Event System](./events) - Event-driven audio control
 
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

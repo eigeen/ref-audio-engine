@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # MHWilds Event System
 
 The Monster Hunter Wilds adapter's event system provides powerful game state monitoring and response mechanisms.
@@ -66,9 +68,3 @@ end)
 
 - [API Reference](./api) - Complete API documentation
 - [Getting Started](./getting-started) - Basic usage guide
-
-<script setup>
-import TranslationWarning from '../../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

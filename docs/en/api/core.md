@@ -1,9 +1,5 @@
 # Core API
 
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
 <TranslationWarning />
 
 This page introduces the core API interfaces of REF Audio Engine.

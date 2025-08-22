@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # MHWilds API Reference
 
 This page provides complete API reference documentation for the Monster Hunter Wilds adapter.
@@ -300,9 +302,3 @@ Refer to example Mod projects.
 
 - [Event System](./events) - Detailed event handling mechanisms
 - [Core API](/en/api/core) - Low-level audio interfaces
-
-<script setup>
-import TranslationWarning from '../../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

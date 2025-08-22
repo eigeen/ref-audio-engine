@@ -12,7 +12,7 @@
 
 ### 1. 下载插件
 
-从 [GitHub Releases](https://github.com/paean-of-guidance/ref-audio-engine/releases) 下载最新版本的 REF Audio Engine。
+从 [GitHub Releases](https://github.com/eigeen/ref-audio-engine/releases) 下载最新版本的 REF Audio Engine。
 
 ### 2. 安装到 REFramework
 

@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Event System
 
 The event system is a core component of REF Audio Engine, providing a powerful event-driven architecture that supports game state monitoring and audio triggering.
@@ -350,8 +352,3 @@ end
 - [MHWilds Event System](/en/games/mhwilds/events) - Game-specific events
 - [MHWilds API](/en/games/mhwilds/api) - Game adapter API
 
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

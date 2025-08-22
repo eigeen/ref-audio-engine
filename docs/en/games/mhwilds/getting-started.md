@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # MHWilds Getting Started
 
 This page will guide you to quickly start using the Monster Hunter Wilds adapter.
@@ -234,9 +236,3 @@ A: You can add time interval checks or use conditional filtering to reduce trigg
 
 - Check [API Reference](./api) to understand complete API functionality
 - Read [Event System](./events) to deeply understand event mechanisms
-
-<script setup>
-import TranslationWarning from '../../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

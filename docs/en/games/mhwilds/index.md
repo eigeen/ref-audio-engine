@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Monster Hunter Wilds Adapter
 
 The Monster Hunter Wilds adapter provides specialized audio functionality and game event support for Monster Hunter Wilds.
@@ -153,9 +155,3 @@ Play environmental sound effects based on game scenes and states.
 2. **Game Version**: The adapter is developed for specific game versions, adjustments may be needed after updates
 3. **File Paths**: Ensure audio file paths are correct, supports relative and absolute paths
 4. **Error Handling**: It's recommended to add appropriate error handling mechanisms in scripts
-
-<script setup>
-import TranslationWarning from '../../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

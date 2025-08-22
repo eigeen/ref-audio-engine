@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Basic Concepts
 
 This page introduces the core concepts and architectural design of REF Audio Engine.
@@ -155,9 +157,3 @@ end)
 
 - Check [API Documentation](/en/api/core) for detailed API reference
 - Read [MHWilds Zone](/en/games/mhwilds/) for game-specific features
-
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

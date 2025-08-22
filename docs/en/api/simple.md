@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Simple API
 
 The Simple API provides the most convenient way to play audio, suitable for quickly implementing audio functionality.
@@ -295,9 +297,3 @@ end
 - [Core API](./core) - Low-level audio interfaces
 - [Audio Engine API](./engine) - Advanced audio engine interface
 - [Event System](./events) - Event-driven audio control
-
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />

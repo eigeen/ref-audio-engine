@@ -1,3 +1,5 @@
+<TranslationWarning />
+
 # Installation and Configuration
 
 This page describes how to install and configure REF Audio Engine.
@@ -12,7 +14,7 @@ This page describes how to install and configure REF Audio Engine.
 
 ### 1. Download Plugin
 
-Download the latest version of REF Audio Engine from [GitHub Releases](https://github.com/paean-of-guidance/ref-audio-engine/releases).
+Download the latest version of REF Audio Engine from [GitHub Releases](https://github.com/eigeen/ref-audio-engine/releases).
 
 ### 2. Install to REFramework
 
@@ -94,8 +96,3 @@ REF Audio Engine outputs debug information in the REFramework console. If you en
 - Read [Basic Concepts](./concepts) to understand core concepts
 - Check [Getting Started](./getting-started) to learn basic usage
 
-<script setup>
-import TranslationWarning from '../../.vitepress/components/TranslationWarning.vue'
-</script>
-
-<TranslationWarning />
