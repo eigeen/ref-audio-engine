@@ -6,8 +6,6 @@ use std::{collections::HashMap, sync::LazyLock};
 use mlua::prelude::*;
 use parking_lot::Mutex;
 
-const GLOBAL_LUA_SCRIPT: &str = include_str!("global_lua.lua");
-
 #[derive(Default)]
 pub struct LuaManager {
     states: Mutex<HashMap<u64, Lua>>,
@@ -22,10 +20,6 @@ impl LuaManager {
     pub fn create(&self, state_ptr: *mut mlua::ffi::lua_State) -> LuaResult<()> {
         let lua = unsafe { Lua::init_from_ptr(state_ptr) };
         Self::register_modules(&lua)?;
-        // mount global lua
-        lua.load(GLOBAL_LUA_SCRIPT)
-            .set_name("AudioEngine_global_state")
-            .exec()?;
 
         self.states.lock().insert(state_ptr as u64, lua);
         Ok(())
