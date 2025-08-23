@@ -40,6 +40,8 @@ local API = {
         PLAYER_MOTION_FRAME = "player_motion_frame",
         -- Game audio system hook
         SOUND_TRIGGER = "sound_trigger",
+        -- Game audio system stop trigger event
+        SOUND_TRIGGER_STOP = "sound_trigger_stop",
         -- Player attack hit event
         PLAYER_HIT = "player_hit"
     },
@@ -72,7 +74,7 @@ function API:on_event(event_type, callback, priority)
         ctx.enable_features.motion = true
     elseif event_type == self.EventType.PLAYER_MOTION_FRAME then
         ctx.enable_features.motion_frame = true
-    elseif event_type == self.EventType.SOUND_TRIGGER then
+    elseif event_type == self.EventType.SOUND_TRIGGER or event_type == self.EventType.SOUND_TRIGGER_STOP then
         ctx.enable_features.sound_trigger = true
     elseif event_type == self.EventType.PLAYER_HIT then
         ctx.enable_features.player_hit = true
