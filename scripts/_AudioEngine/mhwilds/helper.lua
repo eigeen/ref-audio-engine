@@ -138,6 +138,10 @@ function Helper.get_player_weapon_info()
     end
 
     local weapon = character:get_Weapon()
+    if not weapon then
+        return nil
+    end
+
     local weapon_type = weapon._WpType
 
     local weapon_info = {

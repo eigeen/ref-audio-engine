@@ -6,6 +6,7 @@ local SOUND_CONTAINER_TRIGGER_01 = sdk.find_type_definition("soundlib.SoundConta
     "trigger(soundlib.SoundManager.RequestInfo)")
 local SOUND_CONTAINER_TRIGGER_02 = sdk.find_type_definition("soundlib.SoundContainer"):get_method(
     "trigger(System.UInt32, via.GameObject, via.GameObject, System.UInt32, System.Boolean, System.UInt32, via.simplewwise.CallbackType, System.Action`1<soundlib.SoundManager.RequestInfo>, System.Action`1<soundlib.SoundManager.RequestInfo>, System.Action`1<soundlib.SoundManager.RequestInfo>, System.Action`1<soundlib.SoundManager.RequestInfo>)")
+local ON_PLAYER_HIT = sdk.find_type_definition("app.EnemyCharacter"):get_method("evHit_DamagePreProcess(app.HitInfo)")
 
 local g_recent_trigger_info = {
     caller_id = 1,
@@ -122,5 +123,14 @@ sdk.hook(SOUND_CONTAINER_TRIGGER_02, function(args)
     if context.prevent_default_trigger then
         return sdk.PreHookResult.SKIP_ORIGINAL
     end
+end, function(retval)
+end)
+
+sdk.hook(ON_PLAYER_HIT, function(args)
+    if not ctx.enable_features.player_hit then
+        return
+    end
+
+    api:emit_event(api.EventType.PLAYER_HIT)
 end, function(retval)
 end)

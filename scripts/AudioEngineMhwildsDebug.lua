@@ -59,6 +59,13 @@ local function draw_fsm_viewer_window()
     imgui.text("---")
     imgui.text("currentActionID: " .. action_info.ID)
     imgui.text("currentActionID_TYPE: " .. action_info.Type)
+    imgui.text("---")
+
+    local weapon_info = Helper.get_player_weapon_info()
+    if weapon_info then
+        imgui.text("weapon_type: " .. tostring(weapon_info.Type))
+    end
+    imgui.text("---")
 
     local character = Helper._get_character()
 

@@ -10,6 +10,7 @@ local SimpleApi = require("_AudioEngine.simple")
 ---@field motion boolean
 ---@field sound_trigger boolean
 ---@field motion_frame boolean
+---@field player_hit boolean
 
 local function get_or_init_context()
     if AudioEngineContext == nil then
@@ -18,7 +19,8 @@ local function get_or_init_context()
             enable_features = {
                 motion = false,
                 sound_trigger = false,
-                motion_frame = false
+                motion_frame = false,
+                player_hit = false
             },
             event_system = EventSystem.new()
         }
@@ -37,7 +39,9 @@ local API = {
         -- Trigger when motion frame changed (every frame)
         PLAYER_MOTION_FRAME = "player_motion_frame",
         -- Game audio system hook
-        SOUND_TRIGGER = "sound_trigger"
+        SOUND_TRIGGER = "sound_trigger",
+        -- Player attack hit event
+        PLAYER_HIT = "player_hit"
     },
     -- re-export helper
     Helper = Helper
@@ -70,6 +74,8 @@ function API:on_event(event_type, callback, priority)
         ctx.enable_features.motion_frame = true
     elseif event_type == self.EventType.SOUND_TRIGGER then
         ctx.enable_features.sound_trigger = true
+    elseif event_type == self.EventType.PLAYER_HIT then
+        ctx.enable_features.player_hit = true
     end
 
     return ctx.event_system:register_handler(event_type, callback, priority)
